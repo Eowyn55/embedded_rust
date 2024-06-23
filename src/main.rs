@@ -22,7 +22,6 @@ async fn blinker(mut led: Output<'static, PIN_25>, interval: Duration) {
 async fn main(spawner: Spawner) {
     let p = embassy_rp::init(Default::default());
 
-    // todo: check the pin!
     let led = Output::new(p.PIN_25, Level::Low);
     unwrap!(spawner.spawn(blinker(led, Duration::from_millis(300))));
 }
